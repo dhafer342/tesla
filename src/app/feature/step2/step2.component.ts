@@ -20,7 +20,7 @@ export class Step2Component implements OnInit {
   range = signal(0);
   maxSpeed = signal(0);
   cost = signal(0);
-  selectedConfig: string = '1';
+  selectedConfig: string = '';
   configs: Config[] = [];
   includeTow: boolean = false;
   includeYoke: boolean = false;
@@ -36,24 +36,28 @@ export class Step2Component implements OnInit {
   }
 
   ngOnInit(): void {
-    
-      this.dataService
-        .getOption(this.modelCode!)
-        .pipe(first())
-        .subscribe((opt: Option) => {
-          this.option = opt;
-          this.configs = opt.configs;
-          this.onSelectChangeConfig();
-        });
-   
-    this.sharedService.activeStepTow = true;
+    this.dataService
+      .getOption(this.modelCode!)
+      .pipe(first())
+      .subscribe((opt: Option) => {
+        this.option = opt;
+        this.configs = opt.configs;
+        this.onSelectChangeConfig();
+      });
+
   }
 
   onSelectChangeConfig(): void {
-    const config: Config = this.configs.find(
-      (conf) => conf.id === +this.selectedConfig
-    )!;
-    this.setConfig(config);
+    if (this.selectedConfig.length > 0) {
+      const config: Config = this.configs.find(
+        (conf) => conf.id === +this.selectedConfig
+      )!;
+
+      this.setConfig(config);
+      this.sharedService.activeStepTow = true;
+    }else{
+      this.sharedService.activeStepTow = false;
+    }
   }
 
   setConfig(config: Config): void {

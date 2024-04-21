@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs';
 import { Model } from '../../shared/interface/model.interface';
 import { DataService } from '../../shared/service/data.service';
@@ -62,6 +62,7 @@ export class Step1Component implements OnInit {
       this.listColor = undefined;
       this.initializeStep2();
     }
+    this.sharedService.activeStepTow = false;
   }
 
   onSelectChangeColor(): void {

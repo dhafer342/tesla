@@ -1,11 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
-import { DataService } from './shared/service/data.service';
-import { SharedService } from './shared/service/shared.service';
-import { first } from 'rxjs';
-import { Model } from './shared/interface/model.interface';
+
 
 @Component({
   selector: 'app-root',
@@ -13,6 +9,6 @@ import { Model } from './shared/interface/model.interface';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 
-  imports: [JsonPipe, HeaderComponent, RouterModule],
+  imports: [HeaderComponent, RouterModule],
 })
 export class AppComponent {}

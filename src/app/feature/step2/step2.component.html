@@ -8,17 +8,20 @@
       [(ngModel)]="selectedConfig"
       (change)="onSelectChangeConfig()"
     >
+      <option value="">Choose...</option>
       @if (option) { @for (config of configs; track config.id) {
       <option [value]="config.id">{{ config.description }}</option>
       } }
     </select>
   </div>
+  @if (selectedConfig !== "") {
   <div class="flex-row">
     <p>
       Range: {{ range() }} milles - Max Speed: {{ maxSpeed() }} - Cost:
       {{ cost() | currency : "USD" }}
     </p>
   </div>
+  }
   <div class="flex-row">
     @if (option.towHitch) {
     <label for="includeTow">Tow hitch? </label>
@@ -45,4 +48,3 @@
   </div>
   <img [src]="carImg" />
 </div>
-
