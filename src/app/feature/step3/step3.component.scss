@@ -1,0 +1,25 @@
+p {
+    font-size: small;
+    margin: 0px;
+    margin-left: 5px;
+}
+h5{
+    margin: 0px;
+    margin-left: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.item {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+img{
+    height: 100vh;
+}

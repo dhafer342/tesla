@@ -1,0 +1,48 @@
+<div class="flex-column">
+  <div class="flex-row">
+    <h1>Step 2: Select your config and options</h1>
+  </div>
+  <div class="flex-row">
+    <select
+      id="configSelect"
+      [(ngModel)]="selectedConfig"
+      (change)="onSelectChangeConfig()"
+    >
+      @if (option) { @for (config of configs; track config.id) {
+      <option [value]="config.id">{{ config.description }}</option>
+      } }
+    </select>
+  </div>
+  <div class="flex-row">
+    <p>
+      Range: {{ range() }} milles - Max Speed: {{ maxSpeed() }} - Cost:
+      {{ cost() | currency : "USD" }}
+    </p>
+  </div>
+  <div class="flex-row">
+    @if (option.towHitch) {
+    <label for="includeTow">Tow hitch? </label>
+    <input
+      type="checkbox"
+      id="includeTow"
+      [(ngModel)]="includeTow"
+      (change)="includeTowChange()"
+    />
+
+    }
+  </div>
+  <div class="flex-row">
+    @if (option.yoke) {
+    <label for="includeYoke">Yoke steering wheel? </label>
+    <input
+      type="checkbox"
+      id="includeYoke"
+      [(ngModel)]="includeYoke"
+      (change)="includeYokeChange()"
+    />
+
+    }
+  </div>
+  <img [src]="carImg" />
+</div>
+
